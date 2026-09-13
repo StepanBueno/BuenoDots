@@ -1,0 +1,66 @@
+
+#waybar {
+  background: linear-gradient(to top, #3888e9 0%, #4993e6 5%, #2257d5 18%, #2663e0 90%, #1941a5 100%);
+    color: #FFFFA0;
+    border-top: 2px solid #004080;
+    font-family: "sans-serif";
+    font-size: 12px;
+    padding: 5px 10px;
+}
+
+
+
+#custom-start {
+    background-image: url("/home/k/.config/waybar/xp.png");
+    background-repeat: no-repeat;
+    background-size: 98px 40px;
+    background-position: left;
+    padding: 0px 48px;
+}
+
+
+#custom-start:hover {
+    background-image: url("/home/k/.config/waybar/xp-hover.png");
+}
+
+
+#taskbar {
+    background: linear-gradient(to bottom, #3888e9 0%, #4993e6 5%, #2257d5 18%, #2663e0 90%, #1941a5 100%);
+    padding: 5px 0px;
+}
+
+#taskbar button {
+    font-size: 12px;
+    padding: 1px 12px;
+    background-color: #3a7fe9;
+    border: 1px solid #5c8cd5;
+    color: #ffffff;
+    min-width: 200px;
+}
+
+#taskbar button:hover {
+    background-color: #4b8cf2;
+    border-color: #7b9ee0;
+}
+
+#taskbar button.active {
+    background-color: #3b6bb8;
+    border-color: #4a75a4;
+}
+
+
+
+
+#clock,#network,#upower,#pulseaudio,#tray,#language  {
+    font-size: 16px;
+    font-family: "Tahoma", sans-serif;
+    color: #F0F0F0;
+    padding: 0 5px;
+    background: linear-gradient(to bottom, #16adf0 0%, #19b9f3 5%, #1290e8 18%, #0d8dea 60%, #0fa0ef 90%, #1582dc 100%);
+}
+
+
+#group-trayi.drawer-open .trayic-arrow {
+    -gtk-icon-transform: rotate(180deg);
+}
+

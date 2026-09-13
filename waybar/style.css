@@ -1,0 +1,588 @@
+/* Global Styles */
+* {
+    background: linear-gradient(to top, #3888e9 0%, #4993e6 5%, #2257d5 18%, #2663e0 90%, #1941a5 100%);
+    
+    border: none;
+    border-radius: 0px;
+    font-family: "FiraCode Nerd Font", "Font Awesome 6 Free", "sans-serif";
+    color: #ffffff;
+    /*background-color: black;*/
+    background-image: radial-gradient(circle 75px at 50% 150%, rgba(0.0, 0.0, 0.0, 0.0));
+    min-width: 4px;         
+    min-height: 25px;
+    letter-spacing: 0px;     
+    font-weight: bold;
+    margin: 0px 0px;
+    padding: 0px 0px;
+    
+              
+    /*transition: background-image 0.2s ease-in-out, text-shadow 0.2s ease-in-out;*/
+}
+
+/* Module Styles */
+.module {
+    padding: 0px 10px;
+    margin: 0px 0px;
+}
+
+/* Special Case: Left Margin for First Module in Left Section */
+.modules-left>widget:first-child .module {
+    margin-left: 0px;
+}
+
+/* Special Case: Right Margin for Last Module in Right Section */
+.modules-right>widget:last-child .module {
+    margin-right: 5px;
+}
+
+/* Window Styling */
+window#waybar {
+    background: linear-gradient(to bottom, rgba(0, 37, 171, 0.05) 0%, rgba(53, 120, 192, 0.05) 100%);
+    background-color: rgba(0, 5, 98, 0.25);
+    border-top: 0.75px grey solid;
+    color: #ffffff;
+    transition: background-color 0.5s;
+    
+    
+}
+
+/* Make window module transparent when no windows present */
+window#waybar.empty #window {
+    background-color: transparent;
+    background: transparent;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/* Tooltip styling 
+menu,
+tooltip {
+    background: rgba(0, 0, 0, 0.0);
+    border-radius: 7px;
+    border: 0px transparent;
+    border-image: linear-gradient(45deg, white, white) 1;
+    padding: 5px;
+    box-shadow: 0 0 0 0px;
+}
+*/
+menu label,
+tooltip label {
+    color: white;
+}
+
+
+/* Workspaces Button Styling */
+#workspaces button {
+    color: white;
+    background: transparent;
+    font-weight: bolder;
+    
+    box-shadow: inset 0 -3px transparent;
+    transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+    padding: 0 18px 0 8px;
+}
+
+#workspaces button.active {
+    color: white;
+    border-bottom: 2px solid transparent;
+    /* border-top: 2px solid transparent; */
+    border-image: linear-gradient(70deg, white, grey) 1;
+    padding: 0 9px 0 3px;
+    margin-left: 4px;
+    margin-right: 9px;
+}
+
+/*#custom-logo {
+    background: black;
+    color: orange
+}*/
+
+#custom-start {
+    background-image: url("/home/stepan/.config/waybar/pngegg.png");
+    background-repeat: no-repeat;
+    background-size: 50px 45px;
+    background-position: right;
+    padding: 0px 25px;
+}
+
+#custom-start:hover {
+    background-image: url("/home/stepan/.config/waybar/hover.png");
+    transition: all 0.17s ease-in-out;
+}
+
+#workspaces button.focused {
+    background: #2663e0;
+}
+
+#workspaces button.visible {
+    background: linear-gradient(
+        to bottom, 
+        rgba(255, 255, 255, 0.4) 0%, 
+        rgba(255, 255, 255, 0.15) 50%, 
+        rgba(0, 0, 0, 0.05) 51%, 
+        rgba(255, 255, 255, 0.2) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 4px;
+    box-shadow: 
+        inset 0px 1px 0px rgba(255, 255, 255, 0.6), 
+        0px 1px 2px rgba(0, 0, 0, 0.15);
+        
+    padding: 4px 16px;
+    margin: 2px 3px;
+    transition: all 0.2s ease-in-out;
+}
+
+#workspaces button.urgent {
+    background: #2663e0;
+    color: #2663e0;
+    padding: 0px 16px 0px 13px;
+    margin: 0px 3px 0px 9px;
+}
+
+#workspaces button:hover {
+	color: #3b6bb8;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 0 19px 0 12px;
+    margin: 0 10px 0 10px;
+}
+
+#taskbar {
+    background: transparent;
+    padding: 1px;
+    margin: 2px;
+}
+
+#taskbar button {
+    background: linear-gradient(
+        to bottom, 
+        rgba(255, 255, 255, 0.4) 0%, 
+        rgba(255, 255, 255, 0.15) 50%, 
+        rgba(0, 0, 0, 0.05) 51%, 
+        rgba(255, 255, 255, 0.2) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 4px;
+    box-shadow: 
+        inset 0px 1px 0px rgba(255, 255, 255, 0.6), 
+        0px 1px 2px rgba(0, 0, 0, 0.15);
+        
+    padding: 4px 12px;
+    margin: 2px 3px;
+    transition: all 0.2s ease-in-out;
+}
+
+#taskbar button.hover {
+    background: linear-gradient(
+        to bottom, 
+        rgba(255, 255, 255, 0.6) 0%, 
+        rgba(255, 255, 255, 0.3) 50%, 
+        rgba(255, 255, 255, 0.1) 51%, 
+        rgba(255, 255, 255, 0.4) 100%
+    );
+    border-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 
+        inset 0px 0px 8px rgba(255, 255, 255, 0.6),
+        0px 0px 4px rgba(255, 255, 255, 0.4);
+}
+
+#taskbar button.active {
+    background: linear-gradient(
+        to bottom, 
+        rgba(0, 0, 0, 0.15) 0%, 
+        rgba(0, 0, 0, 0.05) 50%, 
+        rgba(255, 255, 255, 0.1) 51%, 
+        rgba(255, 255, 255, 0.2) 100%
+    );
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 
+        inset 0px 2px 5px rgba(0, 0, 0, 0.3),
+        0px 1px 0px rgba(255, 255, 255, 0.2);
+}
+
+/* Specific Module Styles */
+#language,
+#custom-crypto,
+#custom-tray-hide,
+#backlight,
+#cpu,
+#cava,
+#idle_inhibitor,
+#bluetooth,
+#memory,
+#battery,
+#temperature,
+#custom-updates,
+#clock,
+#privacy,
+#pulseaudio,
+#network,
+#wireplumber,
+#keyboard-state,
+#custom-notification,
+#custom-smallnc,
+#custom-weather,
+#custom-temp,
+#custom-temp2,
+#taskbar,
+#user,
+#systemd-failed-units,
+#power,
+#load,
+#jack,
+#cpu-load,
+#image,
+#performance,
+#workspaces {
+    border: none;
+    color: #ffffff;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0));
+    /*background-image: radial-gradient(circle 80px at 50% 150%, #2a2a2a, black);*/
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0);
+	border-radius: 0px;
+	padding: 0px 15px 0px 8px;
+    font-size: 14px;
+    
+    /*transition: background-image 0.2s ease-in-out, text-shadow 0.2s ease-in-out;*/
+}
+/*
+#language:active,
+#custom-crypto:active,
+#custom-tray-hide:active,
+#backlight:active,
+#cpu:active,
+#cava:active,
+#idle_inhibitor:active,
+#bluetooth:active,
+#memory:active,
+#battery:active,
+#temperature:active,
+#custom-updates:active,
+#clock:active,
+#privacy:active,
+#pulseaudio:active,
+#network:active,
+#wireplumber:active,
+#keyboard-state:active,
+#custom-notification:active,
+#custom-smallnc:active,
+#custom-weather:active,
+#custom-temp:active,
+#custom-temp2:active,
+#taskbar:active,
+#user:active,
+#systemd-failed-units:active,
+#power:active,
+#load:active,
+#jack:active,
+#cpu-load:active,
+#image:active,
+#performance:active {
+    background-image: radial-gradient(circle 100px at 50% 150%, #2a2a2a, black);
+}
+*/
+#language:hover,
+#custom-crypto:hover,
+#custom-tray-hide:hover,
+#backlight:hover,
+#cpu:hover,
+#cava:hover,
+#idle_inhibitor:hover,
+#bluetooth:hover,
+#memory:hover,
+#battery:hover,
+#temperature:hover,
+#custom-updates:hover,
+#clock:hover,
+#privacy:hover,
+#pulseaudio:hover,
+#network:hover,
+#wireplumber:hover,
+#keyboard-state:hover,
+#custom-notification:hover,
+#custom-smallnc:hover,
+#custom-weather:hover,
+#custom-temp:hover,
+#custom-temp2:hover,
+#taskbar:hover,
+#user:hover,
+#systemd-failed-units:hover,
+#power:hover,
+#load:hover,
+#jack:hover,
+#custom-spotify:hover,
+#cpu-load:hover,
+#image:hover,
+#performance:hover {
+    text-shadow: 0px 0px 6px #ffffff;
+    animation: jump-scare 0.2s ease-in-out;
+}
+/* #e76f8b */
+
+#workspaces:hover {
+   	color: #e0b2a5;
+    text-shadow: 0px 0px 6px #ffffff;
+}
+
+#custom-crypto {
+	padding-left: 18px;
+	font-family: cryptofont, FiraCode Nerd Font;
+}
+
+#cpu {
+	padding-left: 12px;
+	padding-right: 14px;
+}
+
+#custom-spotify {
+    color: #00ff00;
+    border-radius: 30px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0));
+    background-color: rgba(0, 0, 0, 0);
+    animation: jump-scare 0.2s ease-in-out;
+    text-shadow: 0px 0px 1px #fff;
+    font-size: 16px;
+}
+
+#performance {
+	padding-top: 2px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+#backlight {
+	padding-top: 2px;
+	padding-bottom: 0px;
+}
+
+
+#cpu-load {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+#power {
+    margin: 0px 2px 0px 5px;
+    padding-left: 0px;
+    padding-right: 8px;
+   	color: #e0b2a5;
+}
+
+#power:hover {
+    margin: -14px 0px 0px 0px;
+   	color: #e0b2a5;
+}
+
+#custom-quit,
+#custom-lock,
+#custom-reboot {
+	font-size: 22px;
+	margin: 0px -2px 0px 0px;
+}
+
+@keyframes hov {
+    from {
+        color: #e0b2a5;
+    }
+    
+    to {
+    	color: #e76f8b;
+    	font-size: 38px;
+    }
+}
+
+#custom-power:hover,
+#custom-quit:hover,
+#custom-lock:hover,
+#custom-reboot:hover {
+    animation: hov 0.1s linear 1 alternate;
+    color: #e76f8b;
+    font-size: 38px;
+}
+
+#custom-updates {
+	color: #e0b2a5;
+	padding: 0px 9px 0px 4px;
+}
+
+#temperature.critical {
+   	color: #e0b2a5;
+}
+
+#network.disconnected,
+#wireplumber.muted {
+	color: #e0b2a5;
+	padding-right: 10px;
+}
+
+#custom-tray-hide {
+	padding-right: 20px;
+}
+
+#custom-notification {
+	padding-right: 20px;
+}
+
+@keyframes energy {
+    to {
+        background: linear-gradient(45deg, #e0b2a5, #e76f8b);
+		color: #2663e0;
+    }
+}
+
+#battery.charging,
+#battery.plugged {
+    color: #2663e0;
+    background: linear-gradient(45deg, #e76f8b, #e0b2a5);
+}
+
+#battery.plugged {
+    animation: energy 0.6s linear infinite alternate;
+}
+
+#battery.charging {
+    animation: energy 0.6s linear infinite alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: #2663e0;
+		color: #e0b2a5;
+    }
+}
+
+#battery.warning:not(.charging),
+#battery.critical:not(.charging) {
+    background-color: #e0b2a5;
+    color: #2663e0;
+}
+
+#battery.warning:not(.charging) {
+    animation: blink 1s linear infinite alternate;
+}
+#battery.critical:not(.charging) {
+    animation: blink 0.5s linear infinite alternate;
+}
+
+/* Focused Label Background */
+label:focus {
+    background-color: #2663e0;
+}
+
+
+/* Keyboard State Styles */
+#keyboard-state>label {
+    padding: 0 5px;
+}
+
+#keyboard-state>label.locked {
+    background: rgba(0, 0, 0, 0.0);
+}
+
+#custom-tray-placeholder {
+    padding-left: 0px;   /* Немного отступа слева */
+    padding-right: 0px;  /* Немного отступа справа */
+    background-color: rgba(0, 0, 0, 0);
+    color: #ffffff;      /* Можно задать свой цвет, например, как у #power */
+    font-size: 16px;     /* Размер стрелочки */
+}
+
+/* Tray Styles */
+#tray {
+    margin: 0;
+    padding: 0;
+    padding-left: 8px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#tray>.passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray>.needs-attention {
+    -gtk-icon-effect: highlight;
+    padding: 0 5px;
+    background-color: #e76f8b;
+}
+
+/* Gradient Module Styles */
+#custom-view-mode,
+#window {
+    background: linear-gradient(45deg, #e76f8b, #e0b2a5);
+    padding-left: 17px;
+    padding-right: 17px;
+}
+
+@keyframes playing {
+    from {
+        background: linear-gradient(45deg, #e76f8b, #e0b2a5);
+    }
+    
+    to {
+    	background: linear-gradient(30deg, #e0b2a5, #e76f8b);
+    }
+}
+
+#mpris.paused:not(.status-icons) {
+	animation: none;
+	background: linear-gradient(45deg, #e76f8b, #e0b2a5);
+	padding-left: 17px;
+    padding-right: 5px;
+    border-radius: 30px;
+}
+
+#mpris:not(.status-icons) {
+	padding-left: 15px;
+    padding-right: 7px;
+	animation: playing 1.3s ease infinite alternate;
+}
+
+/*#custom-naga {
+    background-color: #000000;
+    color: #e76f8b;
+}*/
+
+/* Simplified loader style for custom-naga (fully GTK-compatible) */
+#custom-naga {
+    font-family: "VT323", monospace;
+    border: none;
+    color: #ffffff;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0));
+    background-color: rgba(0, 0, 0, 0);
+    /*background-image: radial-gradient(circle 80px at 50% 150%, #2a2a2a, black);*/
+    padding: 0px 20px;
+    min-width: 5px;
+    border-radius: 12px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    transition: background-image 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
+    margin: 0px 5px;
+}
+
+#custom-naga:hover {
+    text-shadow: 0px 0px 8px #fff;
+    animation: jump-scare 0.2s ease-in-out;
+}
+
+/*#custom-naga:active {
+    background-image: radial-gradient(circle 140px at 50% 150%, #2a2a2a, black);
+}*/
+
+/* Safe jump scare animation using only supported properties */
+@keyframes jump-scare {
+    0% {
+        letter-spacing: 2px;
+        opacity: 1;
+    }
+    50% {
+        letter-spacing: 10px;  /* gives a "stretch" effect */
+        opacity: 1;
+    }
+    100% {
+        letter-spacing: 2px;
+        opacity: 1;
+    }
+}

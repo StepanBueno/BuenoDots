@@ -1,0 +1,258 @@
+{
+  "layer": "bottom",
+  "position": "bottom",
+  "margin-top": 0,
+  "margin-left": 0,
+  "margin-right": -5,
+  "spacing": 0,
+  "height": 28,
+  "modules-left": [/*"custom/logo",*/ "custom/start", "wlr/taskbar", "custom/naga"],
+  "modules-center": [
+    "custom/spotify",
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "group/tray",
+    "network",
+    "hyprland/language",
+    "clock",
+    "pulseaudio",
+    "custom/temp",
+    "custom/temp2",
+    "cpu",
+    "memory",
+    "battery",
+    "custom/notifications"
+  ],
+
+  // "hyprland/window": {
+  //   "format": "  {}",
+  //   "separate-outputs": true,
+  //   "rewrite": {
+  //     "(.*)Brave": "$1 ",
+  //     "(.*) - Visual Studio Code": "$1 󰨞",
+  //     "(.*) — Thunar": "$1 󰉋",
+  //     "(.*)Spotify.*": "$1 Spotify 󰓇",
+  //     "(.*) - Discord": "$1  ",
+  //     "(.*?)-\\s*YouTube(.*)": "$1󰗃 ",
+  //     "(.*?\\s)YouTube(.*)": "$1YouTube 󰗃 ",
+  //   },
+  //   "max-length": 50,
+  // },
+
+  "backlight": {
+    "format": "{percent}% {icon}",
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
+  },
+
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 24,
+    "icon-theme": "Breeze",
+    "tooltip-format": "{title}",
+    "on-click": "activate"
+  },
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "on-click": "activate",
+    "all-outputs": true,
+    "active-only": false,
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": [],
+    },
+    "format": "{icon}",
+    "format-icons": {
+      "1": "󰄛",
+      "2": "",
+      "3": "",
+      "4": "󰓇",
+      "5": "",
+      "6": "",
+    },
+  },
+
+
+  "memory": {
+    "interval": 5,
+    "format": " {}%",
+    "max-length": 10,
+    "tooltip": false,
+  },
+
+  "cpu": {
+    "format": "󰍛 {usage}%",
+    "tooltip": false
+  },
+  
+  "group/tray": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "click-to-reveal": true
+    },
+  
+    "modules": [
+      "custom/tray-placeholder",
+      "tray"
+    ]
+  },
+  
+  "custom/tray-placeholder": {
+    "format": "〉", // Здесь можно использовать любой символ-стрелочку
+    "interval": "once",
+    "tooltip": false
+    // Важно: не добавляйте сюда "on-click", иначе drawer может не работать
+  },
+  
+  "tray": {
+    "icon-size": 30,
+    "spacing": 5,
+  },
+
+    
+  "clock": {
+    "format": "<small>{:%H:%M\n%Y-%m-%d}</small>",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%Y-%m-%d}",
+    "on-click-middle": "exec ~/.config/waybar/./timer",
+    "on-click-right": "exec ~/.config/hypr/scripts/./buenodrun"
+    
+  },
+
+  "network": {
+    "format-wifi": "  {signalStrength}%",
+    "format-ethernet": "🖧",
+    "tooltip-format": "{ifname} via {gwaddr} ",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": " ⚠ ",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    "on-click-right": "exec kitty nmtui"
+  },
+
+  "hyprland/language": {
+    "format": "{short}",
+    "rewrite": {
+      "Russian": "RU",
+      "English (US)": "ENG"
+    }
+  },
+
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-bluetooth": "{volume}%",
+    "nospacing": 1,
+    "format-muted": "󰝟",
+    "format-icons": {
+      "headphone": "",
+      "default": ["󰖀", "󰕾", ""],
+    },
+    "on-click": "pavucontrol -t 3",
+    "scroll-step": 1,
+    "tooltip": false,
+  },
+
+  /*"custom/logo": {
+    "format": " ",
+    "tooltip": false,
+    "on-click": "wlogout",
+  },*/
+
+  "custom/start": {
+    "on-click": "~/.config/waybar/bien/start.sh",
+    "format": " {}",
+    "tooltip": false
+  },
+
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-icons": {
+      "charging": ["󰢜 ", "󰂆 ", "󰂇 ", "󰂈 ", "󰢝 ", "󰂉 ", "󰢞 ", "󰂊 ", "󰂋 ", "󰂅 "],
+      "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    },
+    "format-full": "Charged ",
+    "interval": 5,
+    "states": {
+      "warning": 20,
+      "critical": 10,
+    },
+    "tooltip": false,
+  },
+
+  "custom/power": {
+    "format": "󰤆 ",
+    "tooltip": false,
+    "on-click": "exec wlogout -b 5",
+  },
+
+  "custom/notifications": {
+    "format": "{icon} {}",
+    "format-icons": ["  ", "  "],
+    "exec": "$WCM_PATH/swaync",
+    "on-click": "swaync-client -t",
+    "return-type": "json",
+  },
+
+  
+  /*"custom/music": {
+    "format": "󰎈 {}",
+    "exec": "~/.config/waybar/music.sh",
+    "interval": 2,
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "tooltip": false
+  }*/
+  
+  "custom/spotify": {
+    "format": "{}",
+    "exec": "~/.config/waybar/spotify.sh",
+    "interval": 1,
+    "on-click": "playerctl -p spotify play-pause",
+    "on-click-right": "playerctl -p spotify next",
+    "on-scroll-down": "playerctl -p spotify volume 0.4",
+    "on-scroll-up": "playerctl -p spotify volume 0.8",
+    "on-click-middle": "playerctl -p spotify loop track",
+    "on-double-click-middle": "playerctl -p spotify loop none"
+  },
+
+  /*"custom/crypto": {
+    "format": "{}",
+    "interval": 600,
+    "return-type": "json",
+    "exec": "waybar-crypto", // change this if you installed manually
+    "exec-if": "ping pro-api.coinmarketcap.com -c1"
+  }*/
+  
+  /*"custom/weather": {
+    "format": "{}",
+    "exec": "~/.config/hypr/scripts/weather.sh",
+  },*/
+  
+  "custom/temp": {
+    "format": "{}",
+    "exec": "~/.config/waybar/zalupa.sh",
+    "on-click": "exec kitty btop",
+  },
+  
+  "custom/temp2": {
+    "format": "{}",
+    "exec": "~/.config/waybar/zalupa2.sh",
+    "on-click": "exec kitty btop",
+  },
+  
+  "custom/naga": {
+    "format": "⬇",
+    "on-click": "exec kitty -e ~/.config/waybar/./naga.sh",
+    "on-click-right": "killall naga.sh",
+    "on-click-middle": "exec ~/.config/hypr/scripts/./snake"
+  },
+
+  "custom/wifi": {
+    "format": "{}",
+    "exec": "~/.config/waybar/wifi.sh",
+  }
+}

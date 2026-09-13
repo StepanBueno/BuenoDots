@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Screen height in pxels, mine is 1920*1080
+screen_height=1080
+# Height percentage (e.g., 60% for wofi height)
+height_percent=60
+# Taskbar height 
+taskbar_height=42
+
+# Calculate wofi window height
+wofi_height=$((screen_height * height_percent / 100))
+
+# Calculate y-offset to place wofi at the bottom (above the taskbar)
+y_offset=$((screen_height - wofi_height - taskbar_height))
+
+# Check if wofi is running
+if pgrep -x "wofi" > /dev/null; then
+    # If wofi is running, kill it
+    pkill -x wofi
+else
+    # If wofi is not running, launch it
+    wofi --show drun -I --width 20% --height $wofi_height --xoffset 0 --yoffset $y_offset
+fi

@@ -1,0 +1,15 @@
+
+set $wallpaper ~/.local/share/backgrounds/bliss.jpg
+output *  bg "$wallpaper" fill
+
+
+bar {
+position bottom
+swaybar_command i3blocks
+}
+
+exec paplay ~/.local/share/sounds/windows-xp-startup.mp3 
+
+
+# client.<class> <border> <background> <text> <indicator> <child_border>
+client.focused    #ff0000 #ff0000      #ffffff #4477ff     #0000FF  

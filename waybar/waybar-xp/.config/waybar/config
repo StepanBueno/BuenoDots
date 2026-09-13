@@ -1,0 +1,91 @@
+{
+
+"layer": "top",
+"position": "bottom",
+"height": 40,
+"modules-left": ["custom/start","sway/workspaces","wlr/taskbar"],
+"modules-right": ["sway/mode","group/trayi","clock"],
+
+"group/trayi": {
+"orientation": "inherit",
+"drawer": {
+"click-to-reveal": true,
+"children-class": "trayic"
+},
+"modules": [
+"custom/arrow",
+"sway/language",
+"tray",
+"pulseaudio",
+"upower",
+"network"
+]
+},
+
+
+
+"custom/start": {
+"on-click": "menu",
+"format": " {}",
+"tooltip": false
+},
+
+"sway/workspaces": {
+"format": "{name}"
+},
+
+"wlr/taskbar": {
+"format": "{icon} {title:.30}",
+"icon-size": 16,
+"on-click": "activate"
+},
+
+"sway/language": {
+"format": "{}",
+"on-click": "swaymsg input type:keyboard xkb_switch_layout next"
+},
+
+
+"pulseaudio": {
+"format": "{icon}{volume}%",
+"format-bluetooth": "{volume}% {icon}",
+"format-muted": "",
+"format-icons": {
+"headphone": "",
+"default": ["", ""]
+},
+"scroll-step": 1,
+"on-click": "pavucontrol"
+},
+
+
+"network": {
+"format-wifi": "{icon}",
+"format-icons": {
+"wifi": ""
+},
+"format-disconnected": "",
+"on-click": "iwgtk"
+},
+
+"upower": {
+"format" : "{}",
+"icon-size": 16
+},
+
+"clock": {
+"format": "{:%I:%M %p}",
+"tooltip-format": "<tt><small>{:%A, %B %d, %Y %I:%M %p}</small></tt>"
+},
+
+"tray": {
+"icon-size": 21,
+"spacing": 10
+},
+
+"custom/arrow": {
+    "format": "◀",
+    "tooltip": false
+}
+
+}
