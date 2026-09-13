@@ -14,7 +14,6 @@ else
     echo "ℹ️ multilib уже включён"
 fi
 
-# 1. Установка официальных пакетов (убран дубль команды pacman и повторы пакетов)
 sudo pacman -Syu --needed --noconfirm \
   wofi kitty freetype2 zsh git hyprlock hyprpaper waybar \
   ttf-font-awesome otf-font-awesome ttf-jetbrains-mono ttf-dejavu ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-mono \
@@ -22,9 +21,8 @@ sudo pacman -Syu --needed --noconfirm \
   fastfetch file inetutils neovim code bluez bluez-utils blueman \
   telegram-desktop vlc xfdesktop waypaper wine winetricks \
   steam alacritty base-devel awww polkit-gnome \
-  sassc gnome-themes-extra qt5-graphicaleffects qt5-svg qt5-quickcontrols2 # необходимые зависимости для сборки темы Graphite
+  sassc gnome-themes-extra qt6-5compat 
 
-# 2. Установка yay (клонируем в конкретную папку ~/yay, а не в корень ~)
 if ! command -v yay &>/dev/null; then
     git clone https://aur.archlinux.org/yay.git ~/yay
     (cd ~/yay && makepkg -si --noconfirm)
@@ -54,16 +52,17 @@ sudo tee -a /etc/sddm.conf > /dev/null <<'EOF'
 Current=Cartethiya
 EOF
 
+sudo sed -i 's/import QtGraphicalEffects 1.15/import Qt5Compat.GraphicalEffects 1.15/' \
+    /usr/share/sddm/themes/Cartethiya/Main.qml
+
+
 [ -f /etc/default/grub.bak ] || sudo cp /etc/default/grub /etc/default/grub.bak
 
-if grep -q '^GRUB_DEFAULT=saved' /etc/default/grub; then
-    sudo sed -i 's/^GRUB_DEFAULT=saved/GRUB_DEFAULT=0/' /etc/default/grub
-    echo "✅ GRUB_DEFAULT=saved → 0"
-fi
-if grep -q '^GRUB_SAVEDEFAULT=true' /etc/default/grub; then
-    sudo sed -i 's/^GRUB_SAVEDEFAULT=true/#GRUB_SAVEDEFAULT=true/' /etc/default/grub
-    echo "✅ GRUB_SAVEDEFAULT=true закомментирован"
-fi
+grep -q '^GRUB_DEFAULT=' /etc/default/grub \
+    && sudo sed -i 's/^GRUB_DEFAULT=.*/GRUB_DEFAULT=0/' /etc/default/grub \
+    || echo 'GRUB_DEFAULT=0' | sudo tee -a /etc/default/grub > /dev/null
+
+sudo sed -i 's/^GRUB_SAVEDEFAULT=true/#GRUB_SAVEDEFAULT=true/' /etc/default/grub
 
 git clone --depth=1 https://github.com/uiriansan/LainGrubTheme.git ~/LainGrubTheme 
 cd ~/LainGrubTheme
