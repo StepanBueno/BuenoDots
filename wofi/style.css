@@ -1,6 +1,6 @@
 window {
   background-color: #01fede;
-  background-image: url("~/.config/wofi/29ba547be2a064ff063d28c66df11435.jpg");
+  background-image: url(".config/wofi/29ba547be2a064ff063d28c66df11435.jpg");
 }
 
 * {
@@ -15,7 +15,7 @@ window {
 
 #input {
   background-color: black;
-  background-image: url("~/.config/wofi/29ba547be2a064ff063d28c66df11435.jpg");
+  background-image: url(".config/wofi/29ba547be2a064ff063d28c66df11435.jpg");
   color: black;
   outline: none;
   box-shadow: none;
